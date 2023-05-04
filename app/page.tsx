@@ -1,14 +1,23 @@
 import styles from './page.module.css';
 
-const drugList = ['MDMA', 'Ecstasy', 'GHB', 'Cocaine'];
+type Drug = { id: string; name: string };
 
-export default function Home() {
+const fetchDrugList = async (): Promise<Drug[]> => {
+  const drugListResponse = await fetch(
+    'https://6453dcccc18adbbdfea9b950.mockapi.io/drugs'
+  );
+  return drugListResponse.json();
+};
+
+export default async function Home() {
+  const drugList = await fetchDrugList();
+
   return (
     <main className={styles.main}>
       <ul className={styles['drug-list']}>
-        {drugList.map((drug) => (
-          <li className={styles['drug-list-item']} key={drug}>
-            {drug}
+        {drugList.map(({ id, name }) => (
+          <li className={styles['drug-list-item']} key={id}>
+            {name}
           </li>
         ))}
       </ul>
