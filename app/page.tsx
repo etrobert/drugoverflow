@@ -2,21 +2,21 @@ import styles from './page.module.css';
 
 type Drug = { id: string; name: string };
 
-const fetchDrugList = async (): Promise<Drug[]> => {
-  const drugListResponse = await fetch(
+const fetchDrugsList = async (): Promise<Drug[]> => {
+  const drugsListResponse = await fetch(
     'https://6453dcccc18adbbdfea9b950.mockapi.io/drugs'
   );
-  return drugListResponse.json();
+  return drugsListResponse.json();
 };
 
 export default async function Home() {
-  const drugList = await fetchDrugList();
+  const drugsList = await fetchDrugsList();
 
   return (
     <main className={styles.main}>
-      <ul className={styles['drug-list']}>
-        {drugList.map(({ id, name }) => (
-          <li className={styles['drug-list-item']} key={id}>
+      <ul className={styles['drugs-list']}>
+        {drugsList.map(({ id, name }) => (
+          <li className={styles['drugs-list-item']} key={id}>
             {name}
           </li>
         ))}

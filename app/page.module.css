@@ -6,18 +6,18 @@
   min-height: 100vh;
 }
 
-.drug-list {
+.drugs-list {
   display: grid;
   gap: 0.5rem;
   list-style: none;
 }
 
-.drug-list-item {
+.drugs-list-item {
   border-bottom: 1px solid grey;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.5rem;
   font-size: 1.3em;
 }
 
-.drug-list-item:last-child {
+.drugs-list-item:last-child {
   border-bottom: none;
 }
