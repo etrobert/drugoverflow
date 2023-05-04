@@ -7,7 +7,9 @@ export default function Home() {
     <main className={styles.main}>
       <ul className={styles['drug-list']}>
         {drugList.map((drug) => (
-          <li key={drug}>{drug}</li>
+          <li className={styles['drug-list-item']} key={drug}>
+            {drug}
+          </li>
         ))}
       </ul>
     </main>

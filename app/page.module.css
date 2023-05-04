@@ -11,3 +11,13 @@
   gap: 0.5rem;
   list-style: none;
 }
+
+.drug-list-item {
+  border-bottom: 1px solid grey;
+  padding-bottom: 0.3rem;
+  font-size: 1.3em;
+}
+
+.drug-list-item:last-child {
+  border-bottom: none;
+}
