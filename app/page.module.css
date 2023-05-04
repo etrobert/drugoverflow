@@ -1,8 +1,13 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
+  justify-content: flex-end;
+  padding: 1rem;
   min-height: 100vh;
+}
+
+.drug-list {
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
 }
