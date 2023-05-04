@@ -1,13 +1,12 @@
+import { supabase } from './supabaseClient';
+
 import styles from './page.module.css';
 
-type Drug = { id: string; name: string };
+type Drug = { id: number; created_at: string; name: string };
 
-const fetchDrugsList = async (): Promise<Drug[]> => {
-  const drugsListResponse = await fetch(
-    'https://6453dcccc18adbbdfea9b950.mockapi.io/drugs',
-    { next: { revalidate: 10 } }
-  );
-  return drugsListResponse.json();
+const fetchDrugsList = async () => {
+  const { data } = await supabase.from('drugs').select();
+  return data as Drug[]; // TODO: Infer type w/ Supabase CLI
 };
 
 export default async function Home() {
