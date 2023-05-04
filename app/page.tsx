@@ -4,7 +4,8 @@ type Drug = { id: string; name: string };
 
 const fetchDrugsList = async (): Promise<Drug[]> => {
   const drugsListResponse = await fetch(
-    'https://6453dcccc18adbbdfea9b950.mockapi.io/drugs'
+    'https://6453dcccc18adbbdfea9b950.mockapi.io/drugs',
+    { next: { revalidate: 10 } }
   );
   return drugsListResponse.json();
 };
