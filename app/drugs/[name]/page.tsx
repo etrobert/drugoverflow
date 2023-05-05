@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { supabase } from '@/app/supabaseClient';
 
 const fetchDrug = async (name: string) => {
@@ -18,5 +19,10 @@ export default async function Drug({ params: { name } }: Props) {
   const drug = await fetchDrug(name);
   if (drug === null) notFound();
 
-  return <h1>{drug.name}</h1>;
+  return (
+    <h1>
+      <Link href={'/'}>Home - </Link>
+      {drug.name}
+    </h1>
+  );
 }
