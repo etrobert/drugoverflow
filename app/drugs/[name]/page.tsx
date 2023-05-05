@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { supabase } from '@/app/supabaseClient';
 
 import type { Drug } from '@/app/types';
@@ -34,7 +35,9 @@ export default async function Drug({ params: { name } }: Props) {
 
   return (
     <main>
-      <h1>{drug.name}</h1>
+      <h1>
+        <Link href={'/'}>Home</Link> - {drug.name}
+      </h1>
       <ol>
         {facts.map((fact) => (
           <li key={fact.id}>{fact.description}</li>
