@@ -1,8 +1,8 @@
 import { supabase } from './supabaseClient';
 
-import styles from './page.module.css';
+import type { Drug } from './types';
 
-type Drug = { id: number; created_at: string; name: string };
+import styles from './page.module.css';
 
 const fetchDrugsList = async () => {
   const { data } = await supabase.from('drugs').select();
