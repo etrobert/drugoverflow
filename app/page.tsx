@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { supabase } from './supabaseClient';
 
 import styles from './page.module.css';
@@ -17,7 +18,7 @@ export default async function Home() {
       <ul className={styles['drugs-list']}>
         {drugsList.map(({ id, name }) => (
           <li className={styles['drugs-list-item']} key={id}>
-            {name}
+            <Link href={'drugs/' + name}>{name}</Link>
           </li>
         ))}
       </ul>
