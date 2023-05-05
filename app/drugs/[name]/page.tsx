@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '@/app/supabaseClient';
 
+import type { Drug } from '@/app/types';
+
 const fetchDrug = async (name: string) => {
   const supabaseResponse = await supabase
     .from('drugs')
@@ -13,15 +15,34 @@ const fetchDrug = async (name: string) => {
   return supabaseResponse.data;
 };
 
+const fetchFacts = async (drugId: number) => {
+  const supabaseResponse = await supabase
+    .from('facts')
+    .select()
+    .eq('drug_id', drugId);
+
+  return supabaseResponse.data;
+};
+
 type Props = { params: { name: string } };
 
 export default async function Drug({ params: { name } }: Props) {
   const drug = await fetchDrug(name);
   if (drug === null) notFound();
 
+  const facts = await fetchFacts(drug.id);
+  if (facts === null) throw new Error('Could not fetch facts');
+
   return (
-    <h1>
-      <Link href={'/'}>Home</Link> - {drug.name}
-    </h1>
+    <main>
+      <h1>
+        <Link href={'/'}>Home</Link> - {drug.name}
+      </h1>
+      <ol>
+        {facts.map((fact) => (
+          <li key={fact.id}>{fact.description}</li>
+        ))}
+      </ol>
+    </main>
   );
 }
