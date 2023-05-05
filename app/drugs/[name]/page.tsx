@@ -18,9 +18,5 @@ export default async function Drug({ params: { name } }: Props) {
   const drug = await fetchDrug(name);
   if (drug === null) notFound();
 
-  return (
-    <h1>
-      {drug?.id} - {name}
-    </h1>
-  );
+  return <h1>{drug.name}</h1>;
 }
