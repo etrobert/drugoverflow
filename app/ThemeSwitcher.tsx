@@ -8,12 +8,12 @@ function setTheme(theme: string) {
   doc.setAttribute('color-scheme', theme);
 }
 
-export default function ThemeSwitcher() {
-  return (
-    <RadioGroup
-      values={['auto', 'light', 'dark']}
-      defaultValue="auto"
-      onChange={setTheme}
-    />
-  );
-}
+const ThemeSwitcher = () => (
+  <RadioGroup
+    values={['auto', 'light', 'dark']}
+    defaultValue="auto"
+    onChange={setTheme}
+  />
+);
+
+export default ThemeSwitcher;
