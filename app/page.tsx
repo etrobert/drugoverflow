@@ -1,5 +1,7 @@
 import Link from 'next/link';
+
 import { supabase } from './supabaseClient';
+import List from './List';
 
 import type { Drug } from './types';
 
@@ -15,13 +17,11 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
-      <ul className={styles['drugs-list']}>
-        {drugsList.map(({ id, name }) => (
-          <li className={styles['drugs-list-item']} key={id}>
-            <Link href={'drugs/' + name}>{name}</Link>
-          </li>
+      <List>
+        {drugsList.map(({ name }) => (
+          <Link href={'drugs/' + name}>{name}</Link>
         ))}
-      </ul>
+      </List>
     </main>
   );
 }

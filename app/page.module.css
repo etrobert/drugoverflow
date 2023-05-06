@@ -5,19 +5,3 @@
   padding: 1rem;
   min-height: 100vh;
 }
-
-.drugs-list {
-  display: grid;
-  gap: 0.5rem;
-  list-style: none;
-}
-
-.drugs-list-item {
-  border-bottom: 1px solid grey;
-  padding-bottom: 0.5rem;
-  font-size: 1.3em;
-}
-
-.drugs-list-item:last-child {
-  border-bottom: none;
-}
