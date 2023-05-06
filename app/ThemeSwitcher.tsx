@@ -2,15 +2,13 @@
 
 import { useCallback, useState } from 'react';
 
-function OneRadio({
-  value,
-  currentValue,
-  onChange,
-}: {
+type OneRadioProps = {
   value: string;
   currentValue: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}) {
+};
+
+function OneRadio({ value, currentValue, onChange }: OneRadioProps) {
   return (
     <label>
       {value}
