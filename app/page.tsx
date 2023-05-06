@@ -15,8 +15,10 @@ export default async function Home() {
 
   return (
     <List>
-      {drugsList.map(({ name }) => (
-        <Link href={'drugs/' + name}>{name}</Link>
+      {drugsList.map(({ id, name }) => (
+        <Link key={id} href={'drugs/' + name}>
+          {name}
+        </Link>
       ))}
     </List>
   );
