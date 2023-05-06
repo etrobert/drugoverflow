@@ -2,18 +2,18 @@
 
 import RadioGroup from './RadioGroup';
 
-function setTheme(theme: string) {
+function setColorScheme(colorScheme: string) {
   const doc = document.firstElementChild;
   if (doc === null) return;
-  doc.setAttribute('color-scheme', theme);
+  doc.setAttribute('color-scheme', colorScheme);
 }
 
-const ThemeSwitcher = () => (
+const ColorSchemeSwitch = () => (
   <RadioGroup
     values={['auto', 'light', 'dark']}
     defaultValue="auto"
-    onChange={setTheme}
+    onChange={setColorScheme}
   />
 );
 
-export default ThemeSwitcher;
+export default ColorSchemeSwitch;
