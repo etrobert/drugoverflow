@@ -8,21 +8,19 @@ type OneRadioProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-function OneRadio({ value, currentValue, onChange }: OneRadioProps) {
-  return (
-    <label>
-      {value}
-      <input
-        type="radio"
-        id={value}
-        name="theme"
-        value={value}
-        checked={value === currentValue}
-        onChange={onChange}
-      />
-    </label>
-  );
-}
+const OneRadio = ({ value, currentValue, onChange }: OneRadioProps) => (
+  <label>
+    {value}
+    <input
+      type="radio"
+      id={value}
+      name="theme"
+      value={value}
+      checked={value === currentValue}
+      onChange={onChange}
+    />
+  </label>
+);
 
 function setTheme(theme: string) {
   const doc = document.firstElementChild;
