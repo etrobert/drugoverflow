@@ -1,7 +1,7 @@
 'use client';
 
 const same = async () => {
-  const response = await fetch('/api/same');
+  const response = await fetch('/api/same', { method: 'POST' });
   const text = await response.text();
   console.log(text);
 };
