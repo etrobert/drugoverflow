@@ -1,7 +1,7 @@
 .body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 1rem;
   min-height: 100vh;
 }

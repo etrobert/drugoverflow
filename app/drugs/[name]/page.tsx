@@ -36,11 +36,11 @@ export default async function Drug({ params: { name } }: Props) {
   if (facts === null) throw new Error('Could not fetch facts');
 
   return (
-    <main>
+    <>
       <h1>
         <Link href={'/'}>Home</Link> - {drug.name}
       </h1>
       <List>{facts.map(({ description }) => description)}</List>
-    </main>
+    </>
   );
 }

@@ -14,12 +14,15 @@ export default async function Home() {
   const drugsList = await fetchDrugsList();
 
   return (
-    <List>
-      {drugsList.map(({ id, name }) => (
-        <Link key={id} href={'drugs/' + name}>
-          {name}
-        </Link>
-      ))}
-    </List>
+    <>
+      <h1>Drug Overflow</h1>
+      <List>
+        {drugsList.map(({ id, name }) => (
+          <Link key={id} href={'drugs/' + name}>
+            {name}
+          </Link>
+        ))}
+      </List>
+    </>
   );
 }
