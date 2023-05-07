@@ -38,7 +38,7 @@ export default async function Drug({ params: { name } }: Props) {
   return (
     <>
       <h1>
-        <Link href={'/'}>Home</Link> - {drug.name}
+        <Link href={'/'}>◁</Link> {drug.name}
       </h1>
       <List>{facts.map(({ description }) => description)}</List>
     </>
