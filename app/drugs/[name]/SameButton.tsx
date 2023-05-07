@@ -13,8 +13,8 @@ type Props = {
   factId: string;
 };
 
-const SameButton = ({ factId }: Props) => {
-  return <button onClick={() => same(factId)}>Same</button>;
-};
+const SameButton = ({ factId }: Props) => (
+  <button onClick={() => same(factId)}>Same</button>
+);
 
 export default SameButton;
