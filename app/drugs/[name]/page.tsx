@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
-import { supabase } from '@/app/supabaseClient';
+import { client as supabase } from '@/app/supabaseClient';
 import List from '@/app/List';
 import SameButton from './SameButton';
 
