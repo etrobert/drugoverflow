@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { supabase } from '@/app/supabaseClient';
 import List from '@/app/List';
+import SameButton from './SameButton';
 
 import type { Drug } from '@/app/types';
 
@@ -40,7 +41,14 @@ export default async function Drug({ params: { name } }: Props) {
       <h1>
         <Link href={'/'}>Home</Link> - {drug.name}
       </h1>
-      <List>{facts.map(({ description }) => description)}</List>
+      <List>
+        {facts.map(({ description }) => (
+          <>
+            {description}
+            <SameButton />
+          </>
+        ))}
+      </List>
     </main>
   );
 }
