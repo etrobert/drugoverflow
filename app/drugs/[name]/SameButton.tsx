@@ -1,13 +1,20 @@
 'use client';
 
-const same = async () => {
-  const response = await fetch('/api/same', { method: 'POST' });
+const same = async (factId: string) => {
+  const params = new URLSearchParams({ fact_id: factId });
+  const response = await fetch(`/api/same?${params}`, {
+    method: 'POST',
+  });
   const text = await response.text();
   console.log(text);
 };
 
-const SameButton = () => {
-  return <button onClick={same}>Same</button>;
+type Props = {
+  factId: string;
+};
+
+const SameButton = ({ factId }: Props) => {
+  return <button onClick={() => same(factId)}>Same</button>;
 };
 
 export default SameButton;

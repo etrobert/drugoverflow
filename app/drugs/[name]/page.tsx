@@ -42,10 +42,10 @@ export default async function Drug({ params: { name } }: Props) {
         <Link href={'/'}>Home</Link> - {drug.name}
       </h1>
       <List>
-        {facts.map(({ description }) => (
+        {facts.map(({ id, description }) => (
           <>
             {description}
-            <SameButton />
+            <SameButton factId={id} />
           </>
         ))}
       </List>
