@@ -1,5 +1,14 @@
 # DrugOverflow
 
+## Getting Started
+
+```sh
+cd drugoverflow
+npm install
+echo "SUPABASE_SERVICE_ROLE_KEY=<supabase_service_role_key>" >> .env.local
+npm run dev
+```
+
 ## Troubleshooting
 
 When running `npm run dev`:
