@@ -12,5 +12,5 @@ export async function POST(request: Request) {
 
   if (error) throw new Error(error.message);
 
-  return new Response('Hello, Next.js!');
+  return new Response();
 }
