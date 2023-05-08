@@ -17,27 +17,29 @@ describe('RadioGroup', () => {
   });
 
   it('renders the radio buttons with the correct labels', () => {
-    const values = ['0', '1', '2'];
-
-    render(
-      <RadioGroup values={values} defaultValue={'0'} onChange={() => {}} />
-    );
-
-    values.forEach((value) => expect(screen.getByText(value)).toBeDefined());
-  });
-
-  it('sets the default value correctly', () => {
-    const defaultValue = '1';
-
     render(
       <RadioGroup
         values={['0', '1', '2']}
-        defaultValue={defaultValue}
+        defaultValue={'0'}
         onChange={() => {}}
       />
     );
 
-    const defaultRadio = screen.getByLabelText(defaultValue);
+    expect(screen.getByText('0')).toBeDefined();
+    expect(screen.getByText('1')).toBeDefined();
+    expect(screen.getByText('2')).toBeDefined();
+  });
+
+  it('sets the default value correctly', () => {
+    render(
+      <RadioGroup
+        values={['0', '1', '2']}
+        defaultValue={'1'}
+        onChange={() => {}}
+      />
+    );
+
+    const defaultRadio = screen.getByLabelText('1');
 
     expect(defaultRadio).toBeDefined();
     expect(defaultRadio).toBeChecked();
