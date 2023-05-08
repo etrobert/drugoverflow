@@ -16,6 +16,16 @@ describe('RadioGroup', () => {
     expect(screen.getAllByRole('radio')).toHaveLength(3);
   });
 
+  it('renders the radio buttons with the correct labels', () => {
+    const values = ['0', '1', '2'];
+
+    render(
+      <RadioGroup values={values} defaultValue={'0'} onChange={() => {}} />
+    );
+
+    values.forEach((value) => expect(screen.getByText(value)).toBeDefined());
+  });
+
   it('calls onChange with the correct value', async () => {
     const onChange = jest.fn();
     render(
