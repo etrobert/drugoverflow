@@ -26,6 +26,8 @@ describe('RadioGroup', () => {
     values.forEach((value) => expect(screen.getByText(value)).toBeDefined());
   });
 
+  it.todo('sets the default value correctly');
+
   it('calls onChange with the correct value', async () => {
     const onChange = jest.fn();
     render(
