@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { supabase } from './supabaseClient';
+import { client as supabase } from './supabaseClient';
 import List from './List';
 
 import type { Drug } from './types';
