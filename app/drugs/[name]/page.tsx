@@ -9,6 +9,8 @@ import styles from './page.module.css';
 
 import type { Drug } from '@/app/types';
 
+export const revalidate = 2;
+
 const fetchDrug = async (name: string) => {
   const supabaseResponse = await supabase
     .from('drugs')
@@ -52,7 +54,7 @@ export default async function Drug({ params: { name } }: Props) {
             </>
           ))}
         </List>
-        <AddFactForm drugId={drug.id} />
+        <AddFactForm drugId={drug.id} drugName={drug.name} />
       </main>
     </>
   );
