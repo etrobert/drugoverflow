@@ -1,10 +1,19 @@
 import styles from './AddFactForm.module.css';
+import { serverClient as supabase } from '@/app/supabaseClient';
 
-const AddFactForm = () => {
+type Props = {
+  drugId: number;
+};
+
+const AddFactForm = ({ drugId }: Props) => {
   const addFact = async (data: FormData) => {
     'use server';
 
-    console.log(data.get('description'));
+    const { error } = await supabase
+      .from('facts')
+      .insert({ description: data.get('description'), drug_id: drugId });
+
+    console.log(error);
   };
 
   return (

@@ -52,7 +52,7 @@ export default async function Drug({ params: { name } }: Props) {
             </>
           ))}
         </List>
-        <AddFactForm />
+        <AddFactForm drugId={drug.id} />
       </main>
     </>
   );
