@@ -1,10 +1,10 @@
 import styles from './AddFactForm.module.css';
 
 const AddFactForm = () => {
-  const addFact = async (data: { description: string }) => {
+  const addFact = async (data: FormData) => {
     'use server';
 
-    console.log(data.description);
+    console.log(data.get('description'));
   };
 
   return (
