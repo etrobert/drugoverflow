@@ -28,6 +28,7 @@ const AddFactForm = ({ drugId }: Props) => {
           className={styles.textarea}
           placeholder="Add your experience"
           required
+          minLength={5}
         ></textarea>
         <button className={styles.button} type="submit">
           Add
