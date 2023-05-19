@@ -19,19 +19,18 @@ const AddFactForm = ({ drugId }: Props) => {
   return (
     <>
       <form
-        className={styles.form}
         // @ts-expect-error nextjs server action are not correctly typed
         action={addFact}
       >
         <textarea
           name="description"
-          className={styles.textarea}
+          className={styles['form-field']}
           placeholder="Add your experience"
           required
           minLength={5}
           maxLength={255}
         ></textarea>
-        <button className={styles.button} type="submit">
+        <button className={styles['form-field']} type="submit">
           Add
         </button>
       </form>
