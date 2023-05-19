@@ -13,7 +13,7 @@ const AddFactForm = ({ drugId }: Props) => {
       .from('facts')
       .insert({ description: data.get('description'), drug_id: drugId });
 
-    console.log(error);
+    if (error) throw new Error(error.message);
   };
 
   return (
