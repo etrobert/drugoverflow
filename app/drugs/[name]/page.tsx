@@ -4,8 +4,11 @@ import Link from 'next/link';
 import { client as supabase } from '@/app/supabaseClient';
 import List from '@/app/List';
 import SameButton from './SameButton';
+import AddFactForm from './AddFactForm';
 
 import type { Drug } from '@/app/types';
+
+export const revalidate = 2;
 
 const fetchDrug = async (name: string) => {
   const supabaseResponse = await supabase
@@ -41,14 +44,17 @@ export default async function Drug({ params: { name } }: Props) {
       <h1>
         <Link href={'/'}>◁</Link> {drug.name}
       </h1>
-      <List>
-        {facts.map(({ id, description }) => (
-          <>
-            {description}
-            <SameButton factId={id} />
-          </>
-        ))}
-      </List>
+      <main>
+        <List>
+          {facts.map(({ id, description }) => (
+            <>
+              {description}
+              <SameButton factId={id} />
+            </>
+          ))}
+        </List>
+        <AddFactForm drugId={drug.id} />
+      </main>
     </>
   );
 }

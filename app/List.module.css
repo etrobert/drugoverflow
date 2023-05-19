@@ -1,13 +1,12 @@
 .list {
   display: grid;
-  gap: 0.5rem;
+  gap: var(--gap);
   list-style: none;
 }
 
 .item {
   border-bottom: 1px solid grey;
-  padding-bottom: 0.5rem;
-  font-size: 1.3em;
+  padding-bottom: var(--gap);
 }
 
 .item:last-child {
