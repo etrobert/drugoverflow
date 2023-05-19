@@ -5,7 +5,6 @@ import { client as supabase } from '@/app/supabaseClient';
 import List from '@/app/List';
 import SameButton from './SameButton';
 import AddFactForm from './AddFactForm';
-import styles from './page.module.css';
 
 import type { Drug } from '@/app/types';
 
@@ -45,7 +44,7 @@ export default async function Drug({ params: { name } }: Props) {
       <h1>
         <Link href={'/'}>◁</Link> {drug.name}
       </h1>
-      <main className={styles.main}>
+      <main>
         <List>
           {facts.map(({ id, description }) => (
             <>
