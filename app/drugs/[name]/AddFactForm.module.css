@@ -1,5 +1,5 @@
 .form-field {
   width: 100%;
-  padding: 0.5rem;
+  padding: var(--gap);
   border-radius: var(--border-radius);
 }
