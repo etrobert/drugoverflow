@@ -171,6 +171,7 @@ a {
 textarea,
 button {
   font-size: inherit;
+  font-family: inherit;
 }
 
 @media (prefers-color-scheme: dark) {
