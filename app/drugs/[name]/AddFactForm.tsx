@@ -29,7 +29,7 @@ const AddFactForm = ({ drugId }: Props) => {
           required
           minLength={5}
           maxLength={255}
-        ></textarea>
+        />
         <button className={styles['form-field']} type="submit">
           Add
         </button>
