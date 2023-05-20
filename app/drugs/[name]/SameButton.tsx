@@ -1,14 +1,14 @@
 'use client';
 
-const same = (factId: string) => {
-  const params = new URLSearchParams({ fact_id: factId });
+const same = (factId: number) => {
+  const params = new URLSearchParams({ fact_id: factId.toString() });
   return fetch(`/api/same?${params}`, {
     method: 'POST',
   });
 };
 
 type Props = {
-  factId: string;
+  factId: number;
 };
 
 const SameButton = ({ factId }: Props) => (
