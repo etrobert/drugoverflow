@@ -1,38 +1,44 @@
+'use client';
+
+import { maxLength, minLength } from '@/app/addFactValidate';
 import styles from './AddFactForm.module.css';
-import { serverClient as supabase } from '@/app/supabaseClient';
 
 type Props = {
   drugId: number;
 };
 
 const AddFactForm = ({ drugId }: Props) => {
-  const addFact = async (data: FormData) => {
-    'use server';
-
-    const { error } = await supabase
-      .from('facts')
-      .insert({ description: data.get('description'), drug_id: drugId });
-
-    if (error) throw new Error(error.message);
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const description = formData.get('description');
+    const drugId = formData.get('drug_id');
+    fetch('/api/facts', {
+      method: 'POST',
+      body: JSON.stringify({ description, drugId }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    form.reset();
   };
 
   return (
     <>
-      <form
-        // @ts-expect-error nextjs server action are not correctly typed
-        action={addFact}
-      >
+      <form onSubmit={onSubmit}>
         <textarea
           name="description"
           className={styles['form-field']}
           placeholder="Add your experience"
           required
-          minLength={5}
-          maxLength={255}
+          minLength={minLength}
+          maxLength={maxLength}
         />
         <button className={styles['form-field']} type="submit">
           Add
         </button>
+        <input type="hidden" name="drug_id" value={drugId} />
       </form>
     </>
   );
