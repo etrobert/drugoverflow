@@ -1,13 +1,11 @@
 'use client';
 
+import { maxLength, minLength } from '@/app/addFactValidate';
 import styles from './AddFactForm.module.css';
 
 type Props = {
   drugId: number;
 };
-
-const minLength = 5;
-const maxLength = 255;
 
 const AddFactForm = ({ drugId }: Props) => {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -46,5 +44,4 @@ const AddFactForm = ({ drugId }: Props) => {
   );
 };
 
-export { minLength, maxLength };
 export default AddFactForm;
