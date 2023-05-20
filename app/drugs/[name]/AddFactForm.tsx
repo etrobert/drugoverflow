@@ -14,8 +14,8 @@ const AddFactForm = ({ drugId }: Props) => {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const description = formData.get('description') as string;
-    const drugId = formData.get('drug_id') as string;
+    const description = formData.get('description');
+    const drugId = formData.get('drug_id');
     fetch('/api/facts', {
       method: 'POST',
       body: JSON.stringify({ description, drugId }),
