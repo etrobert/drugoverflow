@@ -7,11 +7,31 @@ const anonKey =
 
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (serviceRoleKey === undefined)
-  throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY environment variable');
-
 const client = createClient(supabaseUrl, anonKey);
 
-const serverClient = createClient(supabaseUrl, serviceRoleKey);
+let serverClient: ReturnType<typeof createClient> | null = null;
 
-export { client, serverClient };
+/**
+ * Returns a singleton instance of the server-side Supabase client.
+ *
+ * @throws If SUPABASE_SERVICE_ROLE_KEY is not set.
+ *
+ * @example
+ * import { getServerClient } from 'supabaseClient';
+ *
+ * const supabase = getServerClient();
+ *
+ * const { data, error } = await supabase
+ *   .from('users')
+ *   .select()
+ *   .eq('id', 1);
+ */
+const getServerClient = () => {
+  if (serverClient !== null) return serverClient;
+  if (serviceRoleKey === undefined)
+    throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY environment variable');
+  serverClient = createClient(supabaseUrl, serviceRoleKey);
+  return serverClient;
+};
+
+export { client, getServerClient };
