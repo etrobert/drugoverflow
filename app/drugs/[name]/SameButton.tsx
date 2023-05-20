@@ -5,7 +5,7 @@ type Props = {
 };
 
 const SameButton = ({ factId }: Props) => {
-  const formAction = async () => {
+  const action = async () => {
     'use server';
 
     const { error } = await supabase
@@ -17,7 +17,7 @@ const SameButton = ({ factId }: Props) => {
 
   return (
     // @ts-expect-error nextjs server action are not correctly typed
-    <form action={formAction}>
+    <form action={action}>
       <button>Same</button>
     </form>
   );
