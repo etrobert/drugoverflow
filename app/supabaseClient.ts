@@ -22,9 +22,9 @@ const getServerClient = () => {
  * @throws If SUPABASE_SERVICE_ROLE_KEY is not set.
  *
  * @example
- * import { getServerClient } from 'supabaseClient';
+ * import { getServerClientSingleton } from 'supabaseClient';
  *
- * const supabase = getServerClient();
+ * const supabase = getServerClientSingleton();
  *
  * const { data, error } = await supabase
  *   .from('users')
