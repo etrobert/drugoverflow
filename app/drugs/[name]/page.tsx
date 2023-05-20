@@ -18,7 +18,7 @@ const fetchDrug = async (name: string) => {
     .limit(1)
     .single();
 
-  return supabaseResponse.data;
+  return supabaseResponse.data as Drug | null;
 };
 
 const fetchFacts = async (drugId: number) => {
@@ -53,7 +53,7 @@ export default async function Drug({ params: { name } }: Props) {
             </>
           ))}
         </List>
-        <AddFactForm drugId={drug.id} />
+        <AddFactForm drug={drug} />
       </main>
     </>
   );
