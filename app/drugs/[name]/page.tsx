@@ -8,7 +8,7 @@ import AddFactForm from './AddFactForm';
 
 import type { Drug } from '@/app/types';
 
-export const revalidate = 2;
+export const revalidate = 0;
 
 const fetchDrug = async (name: string) => {
   const supabaseResponse = await supabase
