@@ -1,18 +1,26 @@
-'use client';
-
-const same = (factId: string) => {
-  const params = new URLSearchParams({ fact_id: factId });
-  return fetch(`/api/same?${params}`, {
-    method: 'POST',
-  });
-};
+import { serverClient as supabase } from '@/app/supabaseClient';
 
 type Props = {
   factId: string;
 };
 
-const SameButton = ({ factId }: Props) => (
-  <button onClick={() => same(factId)}>Same</button>
-);
+const SameButton = ({ factId }: Props) => {
+  const formAction = async () => {
+    'use server';
+
+    const { error } = await supabase
+      .from('sames')
+      .insert({ same: true, fact_id: factId });
+
+    if (error) throw new Error(error.message);
+  };
+
+  return (
+    // @ts-expect-error nextjs server action are not correctly typed
+    <form action={formAction}>
+      <button>Same</button>
+    </form>
+  );
+};
 
 export default SameButton;
