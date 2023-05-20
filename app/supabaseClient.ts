@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import singleton from './singleton';
 
 const supabaseUrl = 'https://wovocqafhjqbsjrmvcpb.supabase.co';
 
@@ -9,7 +10,11 @@ const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const client = createClient(supabaseUrl, anonKey);
 
-let serverClient: ReturnType<typeof createClient> | null = null;
+const getServerClient = () => {
+  if (serviceRoleKey === undefined)
+    throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY environment variable');
+  return createClient(supabaseUrl, serviceRoleKey);
+};
 
 /**
  * Returns a singleton instance of the server-side Supabase client.
@@ -26,12 +31,6 @@ let serverClient: ReturnType<typeof createClient> | null = null;
  *   .select()
  *   .eq('id', 1);
  */
-const getServerClient = () => {
-  if (serverClient !== null) return serverClient;
-  if (serviceRoleKey === undefined)
-    throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY environment variable');
-  serverClient = createClient(supabaseUrl, serviceRoleKey);
-  return serverClient;
-};
+const getServerClientSingleton = singleton(getServerClient);
 
-export { client, getServerClient };
+export { client, getServerClientSingleton };
