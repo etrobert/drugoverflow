@@ -30,6 +30,12 @@ const fetchFacts = async (drugId: number) => {
   return supabaseResponse.data;
 };
 
+const fetchSameFacts = async (factId: number) =>
+  await supabase
+    .from('sames')
+    .select('*', { count: 'exact', head: true })
+    .eq('fact_id', factId);
+
 type Props = { params: { name: string } };
 
 export default async function Drug({ params: { name } }: Props) {
@@ -39,6 +45,10 @@ export default async function Drug({ params: { name } }: Props) {
   const facts = await fetchFacts(drug.id);
   if (facts === null) throw new Error('Could not fetch facts');
 
+  const sames = await Promise.all(facts.map((fact) => fetchSameFacts(fact.id)));
+  // TODO: Remove N+1
+  // TODO: Deal with error
+
   return (
     <>
       <h1>
@@ -46,9 +56,10 @@ export default async function Drug({ params: { name } }: Props) {
       </h1>
       <main>
         <List>
-          {facts.map(({ id, description }) => (
+          {facts.map(({ id, description }, index) => (
             <>
               {description}
+              {sames[index].count}
               <SameButton factId={id} />
             </>
           ))}
