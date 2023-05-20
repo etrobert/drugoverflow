@@ -46,4 +46,5 @@ const AddFactForm = ({ drugId }: Props) => {
   );
 };
 
+export { minLength, maxLength };
 export default AddFactForm;

@@ -1,8 +1,5 @@
+import { maxLength, minLength } from '@/app/drugs/[name]/AddFactForm';
 import { serverClient as supabase } from '@/app/supabaseClient';
-
-// TODO: Remove duplication
-const minLength = 5;
-const maxLength = 255;
 
 const validate = (data: unknown) => {
   if (typeof data !== 'object' || data === null)
