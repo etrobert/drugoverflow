@@ -1,6 +1,7 @@
-import { serverClient as supabase } from '@/app/supabaseClient';
+import { getServerClientSingleton } from '@/app/supabaseClient';
 
 export async function POST(request: Request) {
+  const supabase = getServerClientSingleton();
   const { searchParams } = new URL(request.url);
   const factId = searchParams.get('fact_id');
 
