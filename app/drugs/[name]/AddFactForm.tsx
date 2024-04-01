@@ -1,6 +1,5 @@
 import { revalidatePath } from 'next/cache';
 import styles from './AddFactForm.module.css';
-import { serverClient as supabase } from '@/app/supabaseClient';
 import { Drug } from '@/app/types';
 
 type Props = {
@@ -11,11 +10,7 @@ const AddFactForm = ({ drug }: Props) => {
   const addFact = async (data: FormData) => {
     'use server';
 
-    const { error } = await supabase
-      .from('facts')
-      .insert({ description: data.get('description'), drug_id: drug.id });
-
-    if (error) throw new Error(error.message);
+    console.log('Adding fact');
 
     revalidatePath(`/drugs/${drug.name}`);
   };
