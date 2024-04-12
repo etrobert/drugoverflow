@@ -17,23 +17,21 @@ const AddFactForm = ({ drug }: Props) => {
   };
 
   return (
-    <>
-      <form
-        className="grid gap-2"
-        // @ts-expect-error nextjs server action are not correctly typed
-        action={addFact}
-      >
-        <Textarea
-          name="description"
-          placeholder="Add your experience"
-          required
-          minLength={5}
-          maxLength={255}
-          className="resize-none"
-        />
-        <Button type="submit">Add</Button>
-      </form>
-    </>
+    <form
+      className="grid gap-2"
+      // @ts-expect-error nextjs server action are not correctly typed
+      action={addFact}
+    >
+      <Textarea
+        name="description"
+        placeholder="Add your experience"
+        required
+        minLength={5}
+        maxLength={255}
+        className="resize-none"
+      />
+      <Button type="submit">Add</Button>
+    </form>
   );
 };
 
