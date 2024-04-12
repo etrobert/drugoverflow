@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS "drugs" (
+CREATE TABLE IF NOT EXISTS "stories" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"name" text,
+	"description" text NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
