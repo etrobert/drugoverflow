@@ -10,7 +10,7 @@ export default async function Home() {
       <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
         Drug Overflow
       </h1>
-      <main>
+      <main className="grid gap-4">
         <ul>
           {stories.map(({ id, description }) => (
             <li
