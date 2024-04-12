@@ -26,7 +26,7 @@ export default async function Drug({ params: { name } }: Props) {
         <ul>
           {drug.facts.map(({ id, description }) => (
             <li
-              className="py-1 border-solid border-b border-stone-300 last:border-none"
+              className="flex place-content-between py-1 border-solid border-b border-stone-300 last:border-none"
               key={id}
             >
               {description}
