@@ -20,23 +20,27 @@ export default async function Home() {
             >
               {description}
               <div className="flex gap-2 items-center">
-                {sames.reduce((acc, { value }) => acc + (value ? 1 : -1), 0)}
-                <form
-                  action={async () => {
-                    'use server';
-                    await same(id, true);
-                  }}
-                >
-                  <Button size="sm">Me Too</Button>
-                </form>
-                <form
-                  action={async () => {
-                    'use server';
-                    await same(id, false);
-                  }}
-                >
-                  <Button size="sm">Not Me</Button>
-                </form>
+                <span className="font-bold">
+                  {sames.reduce((acc, { value }) => acc + (value ? 1 : -1), 0)}
+                </span>
+                <div className="grid grid-flow-row gap-2 sm:grid-flow-col">
+                  <form
+                    action={async () => {
+                      'use server';
+                      await same(id, true);
+                    }}
+                  >
+                    <Button size="sm">Me Too</Button>
+                  </form>
+                  <form
+                    action={async () => {
+                      'use server';
+                      await same(id, false);
+                    }}
+                  >
+                    <Button size="sm">Not Me</Button>
+                  </form>
+                </div>
               </div>
             </li>
           ))}
