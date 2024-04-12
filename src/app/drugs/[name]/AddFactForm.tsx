@@ -29,6 +29,7 @@ const AddFactForm = ({ drug }: Props) => {
           required
           minLength={5}
           maxLength={255}
+          className="resize-none"
         />
         <Button type="submit">Add</Button>
       </form>
