@@ -23,11 +23,11 @@ export default async function Drug({ params: { name } }: Props) {
       <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
         <Link href={'/'}>◁</Link> {name}
       </h1>
-      <main>
+      <main className="grid gap-4">
         <ul>
           {drug.facts.map(({ id, description }) => (
             <li
-              className="flex place-content-between items-center py-1 border-solid border-b border-stone-300 last:border-none"
+              className="flex place-content-between items-center py-1 border-solid border-b border-stone-300 last:border-none last:pb-0"
               key={id}
             >
               {description}
