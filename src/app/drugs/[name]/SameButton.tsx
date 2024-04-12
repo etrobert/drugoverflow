@@ -14,7 +14,9 @@ type Props = {
 };
 
 const SameButton = ({ factId }: Props) => (
-  <Button onClick={() => same(factId)}>Same</Button>
+  <Button size="sm" onClick={() => same(factId)}>
+    Same
+  </Button>
 );
 
 export default SameButton;
