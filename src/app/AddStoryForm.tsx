@@ -17,11 +17,7 @@ const AddStoryForm = () => {
   };
 
   return (
-    <form
-      className="grid gap-2"
-      // @ts-expect-error nextjs server action are not correctly typed
-      action={addStory}
-    >
+    <form className="grid gap-2" action={addStory}>
       <Textarea
         name="description"
         placeholder="Add your experience"
