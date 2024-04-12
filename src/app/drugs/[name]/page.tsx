@@ -7,6 +7,7 @@ import { db } from '@/db';
 import { eq } from 'drizzle-orm';
 import { drugs } from '@/db/schema';
 import { notFound } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 
 type Props = { params: { name: string } };
 
@@ -30,7 +31,10 @@ export default async function Drug({ params: { name } }: Props) {
               key={id}
             >
               {description}
-              <SameButton factId={id} />
+              <div className="flex gap-2">
+                <SameButton factId={id} />
+                <Button size="sm">Not Me</Button>
+              </div>
             </li>
           ))}
         </ul>

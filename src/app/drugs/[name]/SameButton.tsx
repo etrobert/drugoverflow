@@ -15,7 +15,7 @@ type Props = {
 
 const SameButton = ({ factId }: Props) => (
   <Button size="sm" onClick={() => same(factId)}>
-    Same
+    Me Too
   </Button>
 );
 
