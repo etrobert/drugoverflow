@@ -1,13 +1,11 @@
 import Link from 'next/link';
 
+import { db } from '@/db';
 import List from './List';
 
-const drugs = [
-  { id: 0, name: 'Paracetamol' },
-  { id: 1, name: 'Ibuprofen' },
-]
-
 export default async function Home() {
+  const drugs = await db.query.drugs.findMany();
+
   return (
     <>
       <h1>Drug Overflow</h1>
