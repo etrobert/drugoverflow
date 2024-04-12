@@ -5,7 +5,7 @@ import List from './List';
 const drugs = [
   { id: 0, name: 'Paracetamol' },
   { id: 1, name: 'Ibuprofen' },
-]
+];
 
 export default async function Home() {
   return (

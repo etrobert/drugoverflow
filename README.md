@@ -7,4 +7,3 @@ cd drugoverflow
 npm install
 npm run dev
 ```
-
