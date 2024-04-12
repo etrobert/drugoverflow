@@ -1,5 +1,7 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
+
 const same = (factId: number) => {
   const params = new URLSearchParams({ fact_id: factId.toString() });
   return fetch(`/api/same?${params}`, {
@@ -12,7 +14,7 @@ type Props = {
 };
 
 const SameButton = ({ factId }: Props) => (
-  <button onClick={() => same(factId)}>Same</button>
+  <Button onClick={() => same(factId)}>Same</Button>
 );
 
 export default SameButton;

@@ -1,6 +1,7 @@
 import { revalidatePath } from 'next/cache';
 import styles from './AddFactForm.module.css';
 import { Drug } from '@/db/schema';
+import { Button } from '@/components/ui/button';
 
 type Props = {
   drug: Drug;
@@ -29,9 +30,9 @@ const AddFactForm = ({ drug }: Props) => {
           minLength={5}
           maxLength={255}
         />
-        <button className={styles['form-field']} type="submit">
+        <Button className={styles['form-field']} type="submit">
           Add
-        </button>
+        </Button>
       </form>
     </>
   );
