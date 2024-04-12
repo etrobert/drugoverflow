@@ -12,7 +12,9 @@
     "format:write": "prettier --write .",
     "db:generate": "drizzle-kit generate:pg --schema ./src/db/schema.ts",
     "db:migrate": "bun src/db/migrate.ts",
-    "db:seed": "bun src/db/seed.ts"
+    "db:seed": "bun src/db/seed.ts",
+    "format": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.0",
