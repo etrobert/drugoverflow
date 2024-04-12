@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import AddStoryForm from './AddStoryForm';
-import SameButtons from './SameButtons';
+import { Button } from '@/components/ui/button';
+import same from './same';
 
 export default async function Home() {
   const stories = await db.query.stories.findMany({ with: { sames: true } });
@@ -19,7 +20,24 @@ export default async function Home() {
             >
               {description}
               {sames.reduce((acc, { value }) => acc + (value ? 1 : -1), 0)}
-              <SameButtons storyId={id} />
+              <div className="flex gap-2">
+                <form
+                  action={async () => {
+                    'use server';
+                    await same(id, true);
+                  }}
+                >
+                  <Button size="sm">Me Too</Button>
+                </form>
+                <form
+                  action={async () => {
+                    'use server';
+                    await same(id, false);
+                  }}
+                >
+                  <Button size="sm">Not Me</Button>
+                </form>
+              </div>
             </li>
           ))}
         </ul>
