@@ -11,6 +11,7 @@ const sql = neon(DATABASE_URL);
 const db = drizzle(sql);
 
 await db.delete(drugs);
+await db.delete(facts);
 
 await db.insert(drugs).values([
   { id: 1, name: 'Tylenol' },
