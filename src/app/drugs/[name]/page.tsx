@@ -4,14 +4,19 @@ import List from '@/app/List';
 import SameButton from './SameButton';
 import AddFactForm from './AddFactForm';
 
-import type { Drug } from '@/app/types';
+import { db } from '@/db';
+import { eq } from 'drizzle-orm';
+import { drugs } from '@/db/schema';
+import { notFound } from 'next/navigation';
 
 const facts = [{ id: 0, description: 'I once had a seizure using this drug.' }];
-const drug = { id: 0, name: 'Paracetamol', created_at: '2021-01' };
 
 type Props = { params: { name: string } };
 
 export default async function Drug({ params: { name } }: Props) {
+  const drug = await db.query.drugs.findFirst({ where: eq(drugs.name, name) });
+  if (!drug) notFound();
+
   return (
     <>
       <h1>

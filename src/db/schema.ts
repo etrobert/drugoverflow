@@ -5,3 +5,5 @@ export const drugs = pgTable('drugs', {
   name: text('name'),
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
+
+export type Drug = typeof drugs.$inferSelect;

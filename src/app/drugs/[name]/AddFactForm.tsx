@@ -1,6 +1,6 @@
 import { revalidatePath } from 'next/cache';
 import styles from './AddFactForm.module.css';
-import { Drug } from '@/app/types';
+import { Drug } from '@/db/schema';
 
 type Props = {
   drug: Drug;
