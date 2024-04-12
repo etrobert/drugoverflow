@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm';
 import { pgTable, timestamp, serial, text, integer } from 'drizzle-orm/pg-core';
 
 export const drugs = pgTable('drugs', {
@@ -16,3 +17,11 @@ export const facts = pgTable('facts', {
   description: text('description').notNull(),
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
+
+export const drugsRelations = relations(drugs, ({ many }) => ({
+  facts: many(facts),
+}));
+
+export const factsRelations = relations(facts, ({ one }) => ({
+  drug: one(drugs, { fields: [facts.drugId], references: [drugs.id] }),
+}));
