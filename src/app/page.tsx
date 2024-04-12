@@ -8,7 +8,9 @@ export default async function Home() {
 
   return (
     <>
-      <h1>Drug Overflow</h1>
+      <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+        Drug Overflow
+      </h1>
       <List>
         {drugs.map(({ id, name }) => (
           <Link key={id} href={'drugs/' + name}>

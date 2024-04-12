@@ -20,7 +20,7 @@ export default async function Drug({ params: { name } }: Props) {
 
   return (
     <>
-      <h1>
+      <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
         <Link href={'/'}>◁</Link> {name}
       </h1>
       <main>
