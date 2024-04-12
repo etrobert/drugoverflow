@@ -19,8 +19,8 @@ export default async function Home() {
               key={id}
             >
               {description}
-              {sames.reduce((acc, { value }) => acc + (value ? 1 : -1), 0)}
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
+                {sames.reduce((acc, { value }) => acc + (value ? 1 : -1), 0)}
                 <form
                   action={async () => {
                     'use server';
