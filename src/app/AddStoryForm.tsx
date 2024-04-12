@@ -1,30 +1,26 @@
 import { revalidatePath } from 'next/cache';
-import { Drug, facts } from '@/db/schema';
+import { stories } from '@/db/schema';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { db } from '@/db';
 
-type Props = {
-  drug: Drug;
-};
-
-const AddFactForm = ({ drug }: Props) => {
-  const addFact = async (data: FormData) => {
+const AddStoryForm = () => {
+  const addStory = async (data: FormData) => {
     'use server';
 
     const description = data.get('description');
 
     if (typeof description !== 'string') return;
 
-    await db.insert(facts).values({ description, drugId: drug.id });
-    revalidatePath(`/drugs/${drug.name}`);
+    await db.insert(stories).values({ description });
+    revalidatePath(`/`);
   };
 
   return (
     <form
       className="grid gap-2"
       // @ts-expect-error nextjs server action are not correctly typed
-      action={addFact}
+      action={addStory}
     >
       <Textarea
         name="description"
@@ -39,4 +35,4 @@ const AddFactForm = ({ drug }: Props) => {
   );
 };
 
-export default AddFactForm;
+export default AddStoryForm;

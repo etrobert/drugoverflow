@@ -1,11 +1,11 @@
 {
-  "id": "c1ca46af-247a-4d56-9eb2-8a4f54f11f8d",
+  "id": "5ab438b0-9fd3-42b2-bb93-1ddf3b54aa84",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "drugs": {
-      "name": "drugs",
+    "stories": {
+      "name": "stories",
       "schema": "",
       "columns": {
         "id": {
@@ -14,11 +14,11 @@
           "primaryKey": true,
           "notNull": true
         },
-        "name": {
-          "name": "name",
+        "description": {
+          "name": "description",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
