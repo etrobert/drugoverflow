@@ -1,7 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 
-import styles from './layout.module.css';
+import { cn } from '@/lib/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={[inter.className, styles.body].join(' ')}>
+      <body
+        className={cn(
+          inter.className,
+          'flex flex-col justify-between p-4 min-h-screen text-xl',
+        )}
+      >
         {children}
       </body>
     </html>
