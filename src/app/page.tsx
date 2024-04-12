@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 import { db } from '@/db';
-import List from './List';
 
 export default async function Home() {
   const drugs = await db.query.drugs.findMany();
@@ -11,13 +10,18 @@ export default async function Home() {
       <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
         Drug Overflow
       </h1>
-      <List>
+      <ul>
         {drugs.map(({ id, name }) => (
-          <Link key={id} href={'drugs/' + name}>
-            {name}
-          </Link>
+          <li
+            className="py-1 border-solid border-b border-stone-300 last:border-none"
+            key={id}
+          >
+            <Link key={id} href={'drugs/' + name}>
+              {name}
+            </Link>
+          </li>
         ))}
-      </List>
+      </ul>
     </>
   );
 }

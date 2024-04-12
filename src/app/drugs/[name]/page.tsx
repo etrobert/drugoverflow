@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import List from '@/app/List';
 import SameButton from './SameButton';
 import AddFactForm from './AddFactForm';
 
@@ -24,14 +23,17 @@ export default async function Drug({ params: { name } }: Props) {
         <Link href={'/'}>◁</Link> {name}
       </h1>
       <main>
-        <List>
+        <ul>
           {drug.facts.map(({ id, description }) => (
-            <>
+            <li
+              className="py-1 border-solid border-b border-stone-300 last:border-none"
+              key={id}
+            >
               {description}
               <SameButton factId={id} />
-            </>
+            </li>
           ))}
-        </List>
+        </ul>
         <AddFactForm drug={drug} />
       </main>
     </>
