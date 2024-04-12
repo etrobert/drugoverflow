@@ -69,12 +69,8 @@
           "name": "facts_drug_id_drugs_id_fk",
           "tableFrom": "facts",
           "tableTo": "drugs",
-          "columnsFrom": [
-            "drug_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["drug_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
